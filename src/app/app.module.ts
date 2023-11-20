@@ -3,14 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { FormsModule } from '@angular/forms';
+import { LanderComponent } from './lander/lander.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidenavComponent,
+    WatchlistComponent,
+    LanderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
