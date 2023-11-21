@@ -2,6 +2,7 @@ import { Component, ViewChild} from '@angular/core';
 import { FilmService } from '../shared/film/film.service';
 import { NgForm } from '@angular/forms';
 import { Film } from '../shared/film/film.model';
+import { WatchlistStorageService } from './watchlist-storage.service';
 
 @Component({
   selector: 'app-watchlist',
@@ -13,15 +14,17 @@ export class WatchlistComponent{
   showModal = false;
   myFilms = this.filmService.getFilms()
 
-  constructor(private filmService: FilmService) {}
+  constructor(private filmService: FilmService, private watchlistService: WatchlistStorageService) {}
 
   onSubmit(form: NgForm): void {
     if (form.valid) {
       const newFilm: Film = form.value;
       this.filmService.addFilm(newFilm);
+     
       // Reset
       form.resetForm();
       this.closeFilmModal();
+
     }
   }
 

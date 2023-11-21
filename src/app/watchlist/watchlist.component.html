@@ -1,5 +1,5 @@
 <div class="flex z-10  bg-cover h-full w-full bg-fixed" style="background-image: url('https://wallpapercave.com/wp/wp4016023.jpg');" id="body">
-
+<div *ngIf="showModal" class="fixed top-0 left-0 w-full h-full bg-black opacity-30 "></div>
   <div class="fixed z-50 ml-0">
     <app-sidenav></app-sidenav>
   </div>
@@ -14,7 +14,7 @@
       <button type="button" (click)="openFilmModal()" class="btn w-[105px] mx-2 bg-transparent hover:bg-gray-600 py-2 px-4 border border-orange-500 rounded">New Film</button>
       <button type="button" class="btn w-[105px] mx-2 bg-transparent hover:bg-gray-600 py-2 px-4 border border-orange-500 rounded">Search</button>
     </div>
-    <div *ngIf="showModal" class="fixed top-0 left-0 w-full h-full bg-black opacity-30 "></div>
+
 
   </div>
 

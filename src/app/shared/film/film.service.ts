@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Film } from './film.model';
 import { EventEmitter } from '@angular/core';
+import { WatchlistStorageService } from 'src/app/watchlist/watchlist-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
-  filmSelected = new EventEmitter
+  selectedFilm = new EventEmitter
 
   myFilms: Film[] = [
     { title: 'Inception',
@@ -42,7 +43,8 @@ export class FilmService {
 
 }
 
-addFilm(newFilm: Film): void {
-  this.myFilms.push(newFilm);
+  addFilm(newFilm: Film): void {
+    this.myFilms.push(newFilm);
 }
+
 }
