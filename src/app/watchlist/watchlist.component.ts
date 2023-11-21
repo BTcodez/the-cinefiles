@@ -51,9 +51,9 @@ export class WatchlistComponent{
     if (this.selectedFilm) {
       const index = this.myFilms.indexOf(this.selectedFilm);
       if (index !== -1) {
-        // Remove the selected film from the array
+
         this.myFilms.splice(index, 1);
-        // Clear the selectedFilm variable
+
         this.selectedFilm = null;
       }
     }

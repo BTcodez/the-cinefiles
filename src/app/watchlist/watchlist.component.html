@@ -1,9 +1,10 @@
+<div class="flex z-10  bg-cover h-full w-full bg-fixed" style="background-image: url('https://wallpapercave.com/wp/wp4016023.jpg');" id="body">
 
-<div class="z-10 bg-cover h-full w-full bg-fixed fixed" style="background-image: url('https://wallpapercave.com/wp/wp4016023.jpg');" id="body">
-  <div class="container fixed ml-0 w-[244px] ">
+  <div class="fixed z-50 ml-0">
     <app-sidenav></app-sidenav>
   </div>
-<div class="flex-1 ml-[244px] text-center items-center h-vp" id="watchlist-ui">
+
+<div class="flex-1 items-center ml-[244px] mx-auto text-center h-vp" id="watchlist-ui">
   <!-- Watchlist UI -->
   <div id="header" class=" overflow-auto z-20 bg-transparent bg-opacity-75 backdrop-blur-sm text-gray-200 w-full p-4 top-0 sticky">
     <div id="title">
@@ -19,18 +20,20 @@
 
   <!--Watchlist Display-->
 
-  <div *ngFor="let film of myFilms" class="items-center mx-auto mb-5 relative text-left w-[500px]">
+  <div *ngFor="let film of myFilms" class="mx-auto mb-5 relative text-left w-[500px]">
     <a  class="flex border-solid border-2 bg-opacity-80 backdrop-blur-sm border-sky-500 shadow-md shadow-gray-500 bg-gray-800 text-white p-4 rounded-md" (click)="toggleDetails(film)">
       <div class="flex-1">
         <h4 class="text-2xl font-semibold mb-2 decoration-orange-500 underline">{{ film.title }}</h4>
         <p>{{ film.releaseDate }}</p>
 
-        <!-- Display additional details when selected -->
+        <!-- additional details-->
+
         <div *ngIf="isDetailsVisible(film)" class="mr-4 mb-10">
           <p>Directed by: {{ film.director }}</p>
           <p>Genre: {{ film.genre }}</p>
           <p class=" border-solid border-2 border-orange-500  p-2 rounded-md"><span class="underline decoration-sky-500">About</span><br> {{film.additionalInfo}} </p>
-          <!-- Add more details as needed -->
+
+          <!-- end additional details-->
         </div>
       </div>
       <div class="flex-shrink-0  mb-10  sticky top-0">
@@ -64,17 +67,12 @@
     </a>
   </div>
 
-
-
-
   <!--Film Modal-->
-
 
 <div *ngIf="showModal" class="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px]
  bg-transparent border-solid border-2 border-sky-500 text-white p-6 rounded-md shadow-md backdrop-blur-xl">
   <h2 class="text-xl font-semibold mb-4">Add New Film</h2>
   <form #filmForm="ngForm" (ngSubmit)="onSubmit(filmForm)" class="flex-col">
-    <!-- Film Title -->
 
     <div class="mb-4">
       <label for="title" class="block text-sm text-left font-medium">Title:</label>
@@ -89,10 +87,7 @@
       <input type="text" id="genre" name="genre" placeholder="Genre..." ngModel required class="mt-1 p-2 border-2 text-sky-500 border-orange-500 bg-transparent rounded-md w-full">
     </div>
 
-    <!-- Film Director -->
-    <!-- Add similar blocks for other required fields: director, releaseDate, genre, posterLink -->
-
-    <!-- Additional Info (Optional) -->
+    <!-- About section (pull from rotten) -->
     <div class="mb-4">
       <label for="additionalInfo" class="block text-sm text-left font-medium">About</label>
       <textarea id="additionalInfo" name="additionalInfo" ngModel class="mt-1 p-2 border-2 text-sky-500 border-orange-500 bg-transparent rounded-md w-full"></textarea>
