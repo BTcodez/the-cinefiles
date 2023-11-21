@@ -1,9 +1,9 @@
 
-<div class="flex z-10 flex-row bg-cover h-vp w-screen bg-fixed" style="background-image: url('https://wallpapercave.com/wp/wp4016023.jpg');" id="body">
-  <div class="fixed ml-0">
+<div class="z-10 bg-cover h-full w-full bg-fixed fixed" style="background-image: url('https://wallpapercave.com/wp/wp4016023.jpg');" id="body">
+  <div class="container fixed ml-0 w-[244px] ">
     <app-sidenav></app-sidenav>
   </div>
-<div class=" containeritems-center m-auto text-center  h-vp" id="watchlist-ui">
+<div class="flex-1 ml-[244px] text-center items-center h-vp" id="watchlist-ui">
   <!-- Watchlist UI -->
   <div id="header" class=" overflow-auto z-20 bg-transparent bg-opacity-75 backdrop-blur-sm text-gray-200 w-full p-4 top-0 sticky">
     <div id="title">
@@ -19,7 +19,7 @@
 
   <!--Watchlist Display-->
 
-  <div *ngFor="let film of myFilms" class="m-2 relative text-left w-[500px]">
+  <div *ngFor="let film of myFilms" class="items-center mx-auto mb-5 relative text-left w-[500px]">
     <a  class="flex border-solid border-2 bg-opacity-80 backdrop-blur-sm border-sky-500 shadow-md shadow-gray-500 bg-gray-800 text-white p-4 rounded-md" (click)="toggleDetails(film)">
       <div class="flex-1">
         <h4 class="text-2xl font-semibold mb-2 decoration-orange-500 underline">{{ film.title }}</h4>
