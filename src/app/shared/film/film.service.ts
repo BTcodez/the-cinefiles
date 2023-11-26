@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Film } from './film.model';
-import { EventEmitter } from '@angular/core';
-import { WatchlistStorageService } from 'src/app/watchlist/watchlist-storage.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
-  selectedFilm = new EventEmitter
+  @Output() selectedFilm = new EventEmitter<void>()
 
-  myFilms: Film[] = [
+  onSelectedFilm() {
+    this.selectedFilm.emit();
+  }
+  private myFilms: Film[] = [
     { title: 'Inception',
     director: 'Christopher Nolan',
     releaseDate: 2014,
@@ -35,16 +37,22 @@ export class FilmService {
       genre: 'Suspense',
       coverUrl: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/eff9ba2a-f21a-4313-8be3-d9e784d1b0e5/dbpggz5-037a5d19-4419-417f-bf75-f959889a8c41.png/v1/fill/w_763,h_1048,q_70,strp/brick__2005__movie_poster_hd_by_mephisto_dcix_dbpggz5-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTQwNiIsInBhdGgiOiJcL2ZcL2VmZjliYTJhLWYyMWEtNDMxMy04YmUzLWQ5ZTc4NGQxYjBlNVwvZGJwZ2d6NS0wMzdhNWQxOS00NDE5LTQxN2YtYmY3NS1mOTU5ODg5YThjNDEucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.lWrTgl5ksGrwvh6CGITsFzMfgjgtNXBPvasryJQPKHk',
     }
+
   ];
 
 
-  getFilms(): Film[] {
-    return this.myFilms;
+    getFilms(): Film[] {
+      return this.myFilms;
+
+  }
+
+    addFilm(newFilm: Film): void {
+      this.myFilms.push(newFilm);
+      alert(`Your Film has been added to the watchlist`)
+  }
+
+
 
 }
 
-  addFilm(newFilm: Film): void {
-    this.myFilms.push(newFilm);
-}
 
-}
